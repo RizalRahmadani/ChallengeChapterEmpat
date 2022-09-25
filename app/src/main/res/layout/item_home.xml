@@ -26,7 +26,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:text="Rizal Rahmadani"
+                android:text="@{student.nama}"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:id="@+id/tvNama"
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:text="130202002"
+                android:text="@{student.stambuk}"
                 android:id="@+id/tvStambuk"
                 android:textStyle="bold"
                 android:textColor="@color/black"
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:text="Teknik Informatika"
+                android:text="@{student.jurusan}"
                 android:id="@+id/tvJurusan"
                 android:textStyle="bold"
                 android:textColor="@color/black"

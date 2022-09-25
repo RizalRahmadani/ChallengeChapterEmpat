@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.example.challengechapterempat.R
 import com.example.challengechapterempat.StudentViewModel
 import com.example.challengechapterempat.databinding.FragmentHomeScreenEditDataBinding
@@ -41,17 +42,21 @@ class HomeScreenEditDataFragment : Fragment() {
 
         binding.btnEdit.setOnClickListener{
             EditStudent()
+            Navigation.findNavController(view).navigate(R.id.action_homeScreenEditDataFragment_to_homeScreenFragment)
             Toast.makeText(context, "Edit data student berhasil", Toast.LENGTH_SHORT).show()
         }
     }
 
     fun EditStudent(){
         GlobalScope.async {
+            var getData = arguments?.getSerializable("student") as DataStudent
             var nama = binding.etNama.text.toString()
             var stambuk = binding.etStambuk.text.toString()
             var jurusan = binding.etJurusan.text.toString()
 
-            dbStudent!!.studentDao().insertStudent(DataStudent(0,nama,stambuk, jurusan))
+            val editNote = DataStudent(getData.id, nama, stambuk,jurusan)
+            vmStudent.updateStudent(editNote)
+//            dbStudent!!.studentDao().insertStudent(DataStudent(0,nama,stambuk, jurusan))
 
         }
     }
